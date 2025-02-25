@@ -25,6 +25,9 @@ jobs:
       - name: Authenticate with Railway
         run: railway login --apiKey ${{ secrets.RAILWAY_TOKEN }}
 
+      - name: Railway Help
+        run: railway login --help
+
       - name: Start Railway Service
         if: ${{ github.event.schedule == '42 21 25 * *' }}
         run: |
