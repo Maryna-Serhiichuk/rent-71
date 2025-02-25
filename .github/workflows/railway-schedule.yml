@@ -22,10 +22,6 @@ jobs:
       - name: Install Railway CLI
         run: curl -fsSL https://railway.app/install.sh | sh
 
-      - name: Authenticate with Railway
-        run: railway login ${{ secrets.RAILWAY_TOKEN }}
-
-
       - name: Start Railway Service
         if: ${{ github.event.schedule == '42 21 25 * *' }}
         run: |
@@ -36,8 +32,3 @@ jobs:
       - name: Stop Railway Service
         if: ${{ github.event.schedule == '50 21 25 * *' }}
         run: railway down --project 309a53f5-f0c3-488d-a0e7-0dd93a687ee5
-
-      - name: Get Deployment URL
-        run: |
-          URL=$(railway link)
-          echo "Deployed to: $URL"
