@@ -22,6 +22,10 @@ jobs:
       - name: Install Railway CLI
         run: curl -fsSL https://railway.app/install.sh | sh
 
+      - name: Authenticate with Railway
+        run: railway login --apiKey ${{ secrets.RAILWAY_TOKEN }}
+
+
       - name: Start Railway Service
         if: ${{ github.event.schedule == '42 21 25 * *' }}
         run: |
