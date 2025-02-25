@@ -1,0 +1,33 @@
+${emoji} ${month}
+
+<b>Світло</b>
+1(день)
+(${lastControl}) ${lastDay}
+(${currentControl}) ${currentDay}
+Спожито: ${usedDay}квт
+${usedDay}х${priceDay}=<b>${costDay}грн</b>
+
+2(ніч)
+(${lastControl}) ${lastNight}
+(${currentControl}) ${currentNight}
+Спожито: ${usedNight}квт
+${usedNight}х${priceNight}=<b>${costNight}грн</b>
+_____________________
+
+<b>Газ</b>
+(${lastControl}): ${lastGas}
+(${currentControl}) ${currentGas}
+Спожито: ${usedGas}кб
+
+${usedGas}х${priceGas}=<b>${costGas}грн</b>
+_____________________
+
+<b>Вода</b>
+(${lastControl}): ${lastWater}
+(${currentControl}): ${currentWater}
+Спожито: ${usedWater}кб
+
+${usedWater}х${priceWater}=<b>${costWater}грн</b>
+_____________________
+
+<blockquote>Разом: ${sum} грн</blockquote>
