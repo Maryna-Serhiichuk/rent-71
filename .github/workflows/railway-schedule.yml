@@ -2,8 +2,9 @@ name: Manage Railway Server
 
 on:
   schedule:
-    - cron: "0 0 26 * *" 
+    - cron: "15 23 25 * *" 
     - cron: "0 0 5 * *"
+  workflow_dispatch:
 
 jobs:
   manage-server:
