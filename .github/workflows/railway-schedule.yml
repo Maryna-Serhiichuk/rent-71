@@ -2,14 +2,19 @@ name: Manage Railway Server
 
 on:
   schedule:
-    - cron: "25 21 25 * *" 
-    - cron: "30 21 25 * *"
+    - cron: "42 21 25 * *" 
+    - cron: "50 21 25 * *"
   workflow_dispatch:
+  push:
+    branches: [main]
 
 jobs:
   manage-server:
     runs-on: ubuntu-latest
 
+    env:
+      RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -21,12 +26,12 @@ jobs:
         run: railway login --token ${{ secrets.RAILWAY_TOKEN }}
 
       - name: Start Railway Service
-        if: ${{ github.event.schedule == '25 21 25 * *' }}
+        if: ${{ github.event.schedule == '42 21 25 * *' }}
         run: |
-          railway up --project <your-project-id>  # Підняти сервер
-          yarn install  # Встановити залежності
-          yarn start    # Запустити сервер
+          railway up --project <your-project-id>
+          yarn install
+          yarn start
 
       - name: Stop Railway Service
-        if: ${{ github.event.schedule == '30 21 25 * *' }}
+        if: ${{ github.event.schedule == '50 21 25 * *' }}
         run: railway down --project <your-project-id> 
