@@ -23,7 +23,7 @@ jobs:
         run: curl -fsSL https://railway.app/install.sh | sh
 
       - name: Authenticate with Railway
-        run: railway login --apiKey ${{ secrets.RAILWAY_TOKEN }}
+        run: railway login ${{ secrets.RAILWAY_TOKEN }}
 
 
       - name: Start Railway Service
