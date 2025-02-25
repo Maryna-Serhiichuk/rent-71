@@ -2,8 +2,8 @@ name: Manage Railway Server
 
 on:
   schedule:
-    - cron: "0 0 26 * *"  # Запуск 26-го числа кожного місяця о 00:00 UTC
-    - cron: "0 0 5 * *"   # Зупинка 5-го числа кожного місяця о 00:00 UTC
+    - cron: "0 0 26 * *" 
+    - cron: "0 0 5 * *"
 
 jobs:
   manage-server:
@@ -20,9 +20,12 @@ jobs:
         run: railway login --token ${{ secrets.RAILWAY_TOKEN }}
 
       - name: Start Railway Service
-        if: github.event.schedule == '0 0 26 * *'
-        run: railway up
+        if: ${{ github.event.schedule == '0 0 26 * *' }}
+        run: |
+          railway up --project <your-project-id>  # Підняти сервер
+          yarn install  # Встановити залежності
+          yarn start    # Запустити сервер
 
       - name: Stop Railway Service
-        if: github.event.schedule == '0 0 5 * *'
-        run: railway down
+        if: ${{ github.event.schedule == '0 0 5 * *' }}
+        run: railway down --project <your-project-id> 
