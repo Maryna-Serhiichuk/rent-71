@@ -22,7 +22,7 @@ async function handleMessage(messageObj) {
 
         switch (command) {
             case 'start':
-                return sendMessage(chatId, "Hi! Let's go!")
+                return sendMessage(chatId, "Внось кожен показник почергово. Лише цифри.")
             case 'help':
                 return sendMessage(chatId, helpMessage('9999'))
             case 'result':

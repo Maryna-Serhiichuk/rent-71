@@ -16,7 +16,7 @@ async function calculatePayment() {
         night: coltrolFloat(used.night * prices.electricity.night)
     }
 
-    const sum = Object.values(cost).reduce((acc, value) => acc + value, 0);
+    const sum = coltrolFloat(Object.values(cost).reduce((acc, value) => acc + value, 0));
 
     const payment = new PaymentSummary({ ...cost, sum, period: used.period })
     await payment.save()
